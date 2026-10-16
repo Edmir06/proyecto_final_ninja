@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cffh2iew15g0s"]
+
+[ext_resource type="Script" uid="uid://d28r54vuethy8" path="res://scripts/versus.gd" id="1_aiod0"]
+
+[node name="Versus" type="Control" unique_id=2064237152]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aiod0")

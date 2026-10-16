@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://b40vxwxggnxb1"]
+
+[ext_resource type="Script" uid="uid://t2717rld8nh7" path="res://scenes/menu.gd" id="1_vjb58"]
+[ext_resource type="Texture2D" uid="uid://d08kfwf1rgit4" path="res://assets/fondo madera.jpg" id="1_yqeox"]
+
+[node name="menu" type="Control" unique_id=684710343]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vjb58")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1115867786]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 653.0
+texture = ExtResource("1_yqeox")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1233504014]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 143.0
+offset_right = 772.0
+offset_bottom = 239.0
+theme_override_font_sizes/font_size = 70
+text = "FRUIT NINJA"
+
+[node name="NombreJ1" type="LineEdit" parent="." unique_id=308740947]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 77.0
+offset_top = 294.0
+offset_right = 574.0
+offset_bottom = 357.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "INGRESA TU NOMBRE J1"
+
+[node name="NombreJ2" type="LineEdit" parent="." unique_id=661434235]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 648.0
+offset_top = 290.0
+offset_right = 1124.0
+offset_bottom = 353.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "INGRESA TU NOMBRE J2"
+
+[node name="Button" type="Button" parent="." unique_id=1644828810]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 426.0
+offset_right = 686.0
+offset_bottom = 485.0
+theme_override_font_sizes/font_size = 40
+text = "GO!!!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

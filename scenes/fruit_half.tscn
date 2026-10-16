@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dt4rnoy2tyrp0"]
+
+[ext_resource type="Script" uid="uid://chj81h5ehss71" path="res://fruit_half.gd" id="1_4vef4"]
+
+[node name="FruitHalf" type="RigidBody2D" unique_id=292556958]
+script = ExtResource("1_4vef4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=532829398]
