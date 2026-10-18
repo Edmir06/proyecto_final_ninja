@@ -3,6 +3,7 @@ extends Control
 var escena_partida = preload("res://scenes/main.tscn")
 var resultados := {}
 var texto_final: Label
+var partidas: Array = []
 
 func _ready() -> void:
 	var caja = HBoxContainer.new()
@@ -23,8 +24,10 @@ func _ready() -> void:
 		var partida = escena_partida.instantiate()
 		partida.jugador_id = id
 		partida.es_ia = (id == 2)   # J2 = IA (cámbialo a false para teclado)
+		partida.entrada_bloqueada = true
 		partida.partida_terminada.connect(_on_partida_terminada)
 		vp.add_child(partida)
+		partidas.append(partida)
 
 	# Texto del ganador, centrado arriba
 	var capa = CanvasLayer.new()
@@ -33,6 +36,16 @@ func _ready() -> void:
 	texto_final.set_anchors_preset(Control.PRESET_CENTER_TOP)
 	texto_final.add_theme_font_size_override("font_size", 40)
 	capa.add_child(texto_final)
+
+	# Cartel de bienvenida único, centrado sobre ambas pantallas
+	var intro = IntroBienvenida.new()
+	add_child(intro)
+	intro.terminado.connect(_on_intro_terminada)
+
+func _on_intro_terminada() -> void:
+	for partida in partidas:
+		if is_instance_valid(partida):
+			partida.iniciar_partida()
 
 func _on_partida_terminada(jugador: int, puntos: int) -> void:
 	resultados[jugador] = puntos

@@ -17,7 +17,6 @@ position = Vector2(569, 646)
 
 [node name="TimerLanzamiento" type="Timer" parent="." unique_id=1252274466]
 wait_time = 2.0
-autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1344528768]
 
@@ -46,4 +45,3 @@ text = "Tiempo: 60"
 
 [node name="TimerJuego" type="Timer" parent="." unique_id=671870337]
 wait_time = 30.0
-autostart = true
