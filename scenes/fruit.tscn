@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dquyadg25nd0l"]
 
 [ext_resource type="Script" uid="uid://b0n2wt2oapt88" path="res://fruit.gd" id="1_yvtr8"]
-[ext_resource type="Texture2D" uid="uid://oupjc6020fch" path="res://assets/manzana2.png" id="2_yvtr8"]
+[ext_resource type="Texture2D" uid="uid://de8dud7vqlyj0" path="res://assets/cable left.png" id="2_yvtr8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7wsd"]
 radius = 74.00676

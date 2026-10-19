@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c5vnonr5mka26" path="res://assets/tech_arena.png" id="2_0wfyh"]
 
 [node name="Main" type="Node2D" unique_id=2083391941]
-position = Vector2(-7, -7)
 script = ExtResource("1_o5qli")
 
 [node name="fondo" type="Sprite2D" parent="." unique_id=1068123899]

@@ -35,9 +35,20 @@ func animar_titulo() -> void:
 	t.tween_property(title_label, "modulate", Color(1, 1, 1, 1), 0.8)
 	t.tween_property(title_label, "position", pos_original, 0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
+
 func _on_button_pressed() -> void:
 	var n1 = nombre_j1.text.strip_edges()
 	var n2 = nombre_j2.text.strip_edges()
+
 	Global.nombres[1] = n1 if n1 != "" else "Jugador 1"
 	Global.nombres[2] = n2 if n2 != "" else "Jugador 2"
+
+	# Mostrar la bienvenida después de pulsar GO.
+	var intro = preload("res://scripts/intro_bienvenida.gd").new()
+	add_child(intro)
+
+	# Esperar hasta que termine la animación de bienvenida.
+	await intro.terminado
+
+	# Iniciar la partida después de la bienvenida.
 	get_tree().change_scene_to_file("res://scripts/versus.tscn")
