@@ -13,8 +13,6 @@ var escena_fruta = preload("res://scenes/fruit.tscn")
 # Los asigna versus.gd / control.gd antes de añadir la escena
 var jugador_id: int = 1
 var es_ia: bool = false
-# Cuando el padre muestra el cartel de bienvenida global, la partida espera
-var entrada_bloqueada: bool = false
 
 var puntos: int = 0
 var juego_terminado: bool = false
@@ -35,18 +33,10 @@ func _ready() -> void:
 	texto_tiempo.position = Vector2(180, 20)
 	texto_tiempo.add_theme_font_size_override("font_size", 28)
 
-	# Los timers no arrancan solos; el padre llama a iniciar_partida()
-	# después del cartel de bienvenida (o aquí si se ejecuta suelto)
-	if not entrada_bloqueada:
-		iniciar_partida()
-
-func iniciar_partida() -> void:
-	if juego_terminado:
-		return
 	# Iniciar el temporizador con una leve pausa inicial para evitar bugs de físicas
-	timer_juego.start()
 	timer_lanzamiento.start(2)
-
+	
+	
 func _process(_delta: float) -> void:
 	if not juego_terminado:
 		texto_tiempo.text = "Tiempo: " + str(int(timer_juego.time_left))

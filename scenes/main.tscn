@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://bnytksinl4qwr"]
 
 [ext_resource type="Script" uid="uid://bbfmll26wh0t3" path="res://scripts/main.gd" id="1_o5qli"]
-[ext_resource type="Texture2D" uid="uid://d08kfwf1rgit4" path="res://assets/fondo madera.jpg" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://c5vnonr5mka26" path="res://assets/tech_arena.png" id="2_0wfyh"]
 
 [node name="Main" type="Node2D" unique_id=2083391941]
 position = Vector2(-7, -7)
 script = ExtResource("1_o5qli")
 
 [node name="fondo" type="Sprite2D" parent="." unique_id=1068123899]
-position = Vector2(584, 321.00003)
-scale = Vector2(0.9070312, 0.76201636)
+position = Vector2(582.99994, 331.00003)
+scale = Vector2(0.68899524, 0.6886291)
 texture = ExtResource("2_0wfyh")
 
 [node name="Spawneador" type="Marker2D" parent="." unique_id=915782508]
@@ -17,6 +17,7 @@ position = Vector2(569, 646)
 
 [node name="TimerLanzamiento" type="Timer" parent="." unique_id=1252274466]
 wait_time = 2.0
+autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1344528768]
 
@@ -45,3 +46,4 @@ text = "Tiempo: 60"
 
 [node name="TimerJuego" type="Timer" parent="." unique_id=671870337]
 wait_time = 30.0
+autostart = true
