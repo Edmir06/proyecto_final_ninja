@@ -4,10 +4,29 @@ var jugador: int = 1
 var modo: String = "webcam"
 var velocidad: float = 700.0
 
+# EFECTO DE ESTELA (TRAIL)
+var estela: Line2D
+var puntos_estela: Array[Vector2] = []
+var max_puntos: int = 10
+
 func _ready() -> void:
 	monitoring = true
 	monitorable = true
 	body_entered.connect(_on_contacto)
+	
+	# Inicializar la estela visual según el jugador
+	estela = Line2D.new()
+	estela.width = 10.0
+	var color_base = Color.RED if jugador == 1 else Color.DEEP_SKY_BLUE
+	estela.default_color = color_base
+	
+	# Gradiente para desvanecer la cola del movimiento
+	var gradiente = Gradient.new()
+	gradiente.set_color(0, Color(color_base.r, color_base.g, color_base.b, 0.0))
+	gradiente.set_color(1, color_base)
+	estela.gradient = gradiente
+	
+	get_parent().call_deferred("add_child", estela)
 
 func _process(delta: float) -> void:
 	match modo:
@@ -22,6 +41,16 @@ func _process(delta: float) -> void:
 			_mover_webcam()
 			
 	position = position.clamp(Vector2.ZERO, get_viewport_rect().size)
+	
+	# Actualizar los puntos de la estela con la posición global
+	puntos_estela.append(global_position)
+	if puntos_estela.size() > max_puntos:
+		puntos_estela.pop_front()
+		
+	if estela:
+		estela.clear_points()
+		for p in puntos_estela:
+			estela.add_point(p)
 
 func _mover_webcam() -> void:
 	if jugador == 1:

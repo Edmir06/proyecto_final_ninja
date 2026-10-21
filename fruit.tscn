@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dquyadg25nd0l"]
+
+[ext_resource type="Script" uid="uid://b0n2wt2oapt88" path="res://scripts/fruit.gd" id="1_yvtr8"]
+[ext_resource type="Texture2D" uid="uid://de8dud7vqlyj0" path="res://assets/cable left.png" id="2_yvtr8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7wsd"]
+radius = 74.00676
+
+[node name="fruit" type="RigidBody2D" unique_id=1055783849]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1338727243]
+script = ExtResource("1_yvtr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=496103326]
+position = Vector2(-10, -17)
+scale = Vector2(0.612828, 0.5493727)
+texture = ExtResource("2_yvtr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=84700187]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_s7wsd")
