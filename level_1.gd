@@ -61,11 +61,29 @@ func _ready() -> void:
 		texto_tiempo.position = Vector2(ancho_pantalla / 2 - 50, 20)
 
 	_actualizar_texto_puntos()
+	if es_versus:
+		_crear_separador()
 	
 	texto_tiempo.visible = true
 	texto_tiempo.add_theme_font_size_override("font_size", 28)
 
-	timer_juego.wait_time = 45.0
+	# --- DETERMINAR EL TIEMPO INICIAL ANTES DE ARRANCAR EL TIMER ---
+	var tiempo_inicial = 45.0
+	if "partida_cargada_path" in Global and Global.partida_cargada_path != "":
+		if FileAccess.file_exists(Global.partida_cargada_path):
+			var archivo = FileAccess.open(Global.partida_cargada_path, FileAccess.READ)
+			if archivo:
+				var datos = JSON.parse_string(archivo.get_line())
+				archivo.close()
+				if datos is Dictionary and datos.has("tiempo_guardado"):
+					var tiempo_guardado = datos["tiempo_guardado"]
+					if tiempo_guardado > 0:
+						tiempo_inicial = tiempo_guardado
+						print("⏱️ Tiempo restaurado correctamente: ", tiempo_inicial)
+		Global.partida_cargada_path = "" # Limpiamos la variable global
+
+	# Configuramos el timer con el tiempo correcto (sea 45 o el guardado)
+	timer_juego.wait_time = max(1.0, tiempo_inicial)
 	timer_juego.one_shot = true
 
 	timer_lanzamiento.start(2.5)
@@ -91,14 +109,25 @@ func _on_timer_lanzamiento_timeout() -> void:
 	
 	if es_versus:
 		var lado = randi() % 2
+		var propietario = lado + 1
 		if lado == 0:
-			nueva_fruta.position = Vector2(randf_range(ancho * 0.05, ancho * 0.45), spawneador.position.y)
+			nueva_fruta.position = Vector2(randf_range(ancho * 0.08, ancho * 0.42), spawneador.position.y)
 		else:
-			nueva_fruta.position = Vector2(randf_range(ancho * 0.55, ancho * 0.95), spawneador.position.y)
+			nueva_fruta.position = Vector2(randf_range(ancho * 0.58, ancho * 0.92), spawneador.position.y)
+		nueva_fruta.get_node("RigidBody2D").jugador_destino = propietario
 	else:
 		nueva_fruta.position = Vector2(randf_range(ancho * 0.1, ancho * 0.9), spawneador.position.y)
 
 	add_child(nueva_fruta)
+
+func _crear_separador() -> void:
+	var tamanio = get_viewport_rect().size
+	var separador = Line2D.new()
+	separador.width = 4.0
+	separador.default_color = Color(0.2, 0.9, 1.0, 0.75)
+	separador.add_point(Vector2(tamanio.x * 0.5, 0))
+	separador.add_point(Vector2(tamanio.x * 0.5, tamanio.y))
+	add_child(separador)
 
 func sumar_punto(jugador: int = 1) -> void:
 	if not juego_terminado:
@@ -129,6 +158,7 @@ func _crear_cursor(id_jugador: int) -> void:
 	c.set_script(preload("res://scripts/cursor.gd"))
 	c.jugador = id_jugador
 	c.modo = "webcam"
+	c.restringir_zona = es_versus
 	
 	var ancho = get_viewport_rect().size.x
 	var alto = get_viewport_rect().size.y
@@ -168,6 +198,15 @@ func _on_timer_juego_timeout() -> void:
 		texto_tiempo.text = "¡CASI! Necesitan 15 pts\nPuntos: " + str(max_puntos)
 		await get_tree().create_timer(2.5).timeout
 		get_tree().change_scene_to_file("res://scenes/level1.tscn")
-		
-		
-		
+
+# --- MÉTODOS PARA EL SISTEMA DE GUARDADO ---
+
+func obtener_tiempo_restante() -> float:
+	if timer_juego:
+		return timer_juego.time_left
+	return 0.0
+
+func cargar_tiempo_guardado(tiempo_guardado: float) -> void:
+	if timer_juego:
+		timer_juego.wait_time = max(1.0, tiempo_guardado)
+		timer_juego.start()
