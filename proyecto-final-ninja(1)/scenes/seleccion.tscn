@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b241acaw3i5yx"]
+
+[ext_resource type="Script" uid="uid://ch77rkibj81ev" path="res://scenes/seleccion.gd" id="1_ginm4"]
+[ext_resource type="Texture2D" uid="uid://dkk5ufbmlv2y1" path="res://assets/tech_background.png" id="2_8qvrd"]
+
+[node name="Seleccion" type="Control" unique_id=139314871]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ginm4")
+
+[node name="TechBackground" type="Sprite2D" parent="." unique_id=276904417]
+position = Vector2(574, 325.49997)
+scale = Vector2(0.68899524, 0.68969184)
+texture = ExtResource("2_8qvrd")

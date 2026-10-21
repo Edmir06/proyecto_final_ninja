@@ -1,0 +1,32 @@
+TECH NINJA - CAMARA CORREGIDA
+
+1) Descomprime el ZIP completo en una carpeta.
+2) En Windows, ejecuta INSTALAR_WEBCAM.bat (solo primera vez). Recomendado Python 3.11 o 3.12.
+3) Ejecuta INICIAR_CAMARA.bat. Debe aparecer la ventana con video y FPS.
+4) Con la ventana de camara abierta, abre project.godot y ejecuta el juego en Godot.
+5) Al INICIAR la deteccion, jugador 1 pone su mano en la IZQUIERDA del video,
+   jugador 2 pone su mano en la DERECHA. Pueden usar ambos mano derecha.
+6) Tecla R en la ventana de la webcam = reiniciar la asignacion.
+   Tecla Q = terminar la webcam.
+
+QUE SE CORRIGIO:
+- Prueba webcam 0/1/2 y controladores DirectShow / Media Foundation / automatico.
+- Mensajes de error legibles.
+- FPS de la webcam visible en pantalla.
+- Mantiene identificadores de J1/J2 por continuidad de posicion para evitar
+  cambios al variar el orden de deteccion de MediaPipe.
+- Conserva envio UDP 127.0.0.1:4242, pixeles en 640x480.
+- No modifica los niveles del juego.
+
+LIMITACIONES:
+- Si las manos se superponen o desaparecen y reaparecen, puede requerirse R.
+- Se intenta asociar por posicion y movimiento, no se reconocen biometrica-
+  mente las manos. No es garantia de identidad perfecta al cruzarse.
+- No se pudo probar aqui con la camara fisica de tu computadora ni Godot Windows.
+
+SI NO ABRE:
+- Comprueba si la app Camara de Windows funciona.
+- Configuracion > Privacidad y seguridad > Camara > acceso para aplicaciones
+  de escritorio.
+- Cierra Zoom, Meet, OBS y otras apps.
+- Ejecuta INICIAR_CAMARA.bat y copia el mensaje exacto que muestre.
