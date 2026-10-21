@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://b40vxwxggnxb1"]
+
+[ext_resource type="Script" uid="uid://t2717rld8nh7" path="res://scripts/menu.gd" id="1_vjb58"]
+[ext_resource type="Texture2D" uid="uid://dkk5ufbmlv2y1" path="res://assets/tech_background.png" id="3_con2f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjb58"]
+bg_color = Color(0.02745098, 0.101960786, 0.1882353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.8509804, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="menu" type="Control" unique_id=684710343]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vjb58")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1115867786]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 653.0
+texture = ExtResource("3_con2f")
+expand_mode = 1
+
+[node name="TechBackground" type="Sprite2D" parent="." unique_id=423818003]
+position = Vector2(578.5, 326.5)
+scale = Vector2(0.6919856, 0.69394255)
+texture = ExtResource("3_con2f")
+
+[node name="Label" type="Label" parent="." unique_id=1233504014]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 119.0
+offset_right = 786.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0.91764706, 0.96862745, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.54901963, 1, 0.33333334)
+theme_override_colors/font_outline_color = Color(0.03137255, 0.49803922, 0.76862746, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 75
+text = " TECH NINJA"
+
+[node name="NombreJ1" type="LineEdit" parent="." unique_id=308740947]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 77.0
+offset_top = 294.0
+offset_right = 574.0
+offset_bottom = 357.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "      PLAYER 1"
+
+[node name="NombreJ2" type="LineEdit" parent="." unique_id=661434235]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 648.0
+offset_top = 290.0
+offset_right = 1124.0
+offset_bottom = 353.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "     PLAYER 2"
+
+[node name="Button" type="Button" parent="." unique_id=1644828810]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 426.0
+offset_right = 686.0
+offset_bottom = 485.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_vjb58")
+text = "GO!!!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

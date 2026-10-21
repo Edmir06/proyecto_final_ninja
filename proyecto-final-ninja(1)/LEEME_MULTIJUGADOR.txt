@@ -1,0 +1,27 @@
+TECH NINJA - MULTIJUGADOR CON ZONAS SEPARADAS
+
+El proyecto conserva la webcam Python corregida y los niveles.
+
+CAMBIOS
+- En dos jugadores, J1 solo controla su mitad izquierda y J2 la derecha.
+- Los objetos nacen dentro de su mitad y no pueden cruzar la mitad central.
+- Cada objeto solo puede ser cortado por su jugador; puntos independientes.
+- También se limitan los trozos de los objetos cortados.
+- Se dibuja una linea divisoria en los niveles compartidos 1, 2 y 3.
+- Modo un jugador conserva toda la pantalla.
+- Webcam usa el mismo archivo Python previamente corregido.
+
+COMO JUGAR
+1. Extraer todo este ZIP (no abrir directamente desde ZIP).
+2. Abrir project.godot desde la carpeta extraida.
+3. Ejecutar INICIAR_CAMARA.bat. No volver a ejecutar INSTALAR_WEBCAM.bat
+   si ya resolviste las versiones de Python.
+4. Seleccionar 2 Players. Poner J1 a la izquierda y J2 a la derecha
+   en la webcam. Si cambia el registro, pulsar R en la webcam.
+
+NOTAS
+- La separacion de pantalla en Godot es estricta.
+- Las identidades de las manos todavia pueden volverse ambiguas si se
+  superponen por mucho tiempo: conviene mantener las manos en su lado.
+- No se ha podido probar con webcam o ejecutar Godot en este entorno;
+  prueba en tu PC y envia captura si aparece algun error.
