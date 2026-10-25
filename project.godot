@@ -11,17 +11,18 @@ config_version=5
 [application]
 
 config/name="frutininja"
-run/main_scene="uid://b40vxwxggnxb1"
+run/main_scene="uid://b241acaw3i5yx"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*uid://bd43bhohtst2c"
 RedWebcam="*uid://c3x2d0g0s0r5s"
+Pausa="*uid://byfqtt7nw055b"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

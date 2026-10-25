@@ -1,0 +1,32 @@
+TECH NINJA — CAMARA POR MODOS Y PANTALLA COMPLETA
+================================================
+
+1. Extrae este ZIP completo en una carpeta (no lo abras dentro de WinRAR).
+2. Abre project.godot con Godot 4.x (proyecto creado con Godot 4.7).
+3. Ejecuta INICIAR_CAMARA.bat. Requiere las librerias Python ya instaladas.
+4. Ejecuta el juego en Godot, y elige "1 Player" o "2 Players".
+
+MODO 1 PLAYER:
+- SOLO se muestra y controla el Jugador 1.
+- Una mano puede recorrer toda la camara, incluso la mitad derecha.
+- No aparece la linea divisoria de la camara y no se activara el Jugador 2.
+
+MODO 2 PLAYERS:
+- Jugador 1 comienza a la izquierda de la camara.
+- Jugador 2 comienza a la derecha de la camara.
+- Cada jugador controla su mitad del campo de juego.
+
+La seleccion de modo se comunica automaticamente entre Godot y Python
+por UDP localhost:4243. Las posiciones de la camara usan localhost:4242.
+Para cambiar entre los modos vuelve a la seleccion de modo del juego.
+Si tienes abierto un proceso viejo de INICIAR_CAMARA, cierralo antes de
+iniciar la webcam actualizada.
+
+PANTALLA COMPLETA:
+- El juego arranca en pantalla completa.
+- Pulsa F11 para alternar entre pantalla completa y ventana.
+- Fondos y objetos usan el tamano actual de la pantalla.
+- En Godot, si el juego esta incrustado en el editor, puedes habilitar
+  'Ejecutar en ventana separada' para comprobar la pantalla completa.
+
+NOTA: No se pudo hacer prueba real con tu webcam/monitor desde aqui.
